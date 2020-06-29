@@ -26,6 +26,9 @@ namespace App;
         {
             return $this->loginResult;
         }
+        public static function auth() {
+            return (isset($_SESSION['login']) && $_SESSION['login'] == 1);
+        }
 
 
 

@@ -29,6 +29,11 @@ class App
                 self::redirect('login');
             }
         }
+        if(in_array(self::$params[1], self::$defend)) {
+            if(!Login::auth()) {
+                self::redirect('login');
+            }
+        }
 
         if (file_exists(self::VIEW_DIR . self::$params[1] . '.php')) {
             require(self::VIEW_DIR . self::$params[1] . '.php');
