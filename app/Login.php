@@ -22,4 +22,14 @@ namespace App;
                 }
             }
         }
+        public function result() 
+        {
+            return $this->loginResult;
+        }
+
+
+
+
+
+
     }

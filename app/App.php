@@ -11,6 +11,8 @@ class App
     const URL = 'http://192.168.64.2/PHP/BANK_OOP/public/';
     private static $params = [];
 
+    private static $defend = ['slaptas-1']; // Apsaugoti failai
+
     public static function start()
     {
         session_start();
@@ -20,6 +22,12 @@ class App
 
         if (self::$params[1] == 'doLogin') {
             $login = new Login;
+
+            if ($login->result()) {
+                self::redirect('slaptas-1');
+            } else {
+                self::redirect('login');
+            }
         }
 
         if (file_exists(self::VIEW_DIR . self::$params[1] . '.php')) {
