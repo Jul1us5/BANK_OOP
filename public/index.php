@@ -1,10 +1,13 @@
 <?php
 
+use App\App;
+
 require '../vendor/autoload.php';
 
-define('DIR', '/PHP/BANK_OOP/public');
+App::start();
 
-$param = str_replace(DIR, '', $_SERVER['REQUEST_URI']);
-$params = explode('/', $param);
 
-var_dump($params);
+
+
+
+var_dump(App::getParams());
