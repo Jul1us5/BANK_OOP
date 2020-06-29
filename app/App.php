@@ -5,6 +5,7 @@ namespace App;
 class App
 {
     const DIR = '/PHP/BANK_OOP/public';
+    const VIEW_DIR = './../view/';
     private static $params = [];
 
     public static function start()
@@ -13,7 +14,9 @@ class App
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
-        // var_dump($params);
+        if (file_exists(self::VIEW_DIR.self::$params[1].'.php')) {
+            require(self::VIEW_DIR.self::$params[1].'.php');
+        }
     }
 
 
@@ -21,6 +24,4 @@ class App
     {
         return self::$params;
     }
-
-    
 }
