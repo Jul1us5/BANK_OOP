@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use App\DB\JsonDb;
+
     class Login
     {
         private $loginResult = false;
@@ -11,7 +13,7 @@ namespace App;
             $data = [
                 ['name' => 'Julius', 'pass' => md5('12345')],
             ];
-            
+                        
             if (!empty($_POST)) {
                 foreach ($data as $user) {
                     if ($user['name'] === $_POST['user'] &&
