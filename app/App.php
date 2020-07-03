@@ -33,9 +33,10 @@ class App
                     $db = new DB;
                     $db->create($newUser);
                 }
-                if (self::$params[2] == 'delete') {
-                    
-                    
+                if (self::$params[2] == 'removed') {
+                    $remove = Delete::deleteUser();
+                  
+                    var_dump($remove);
                 }
 
              
