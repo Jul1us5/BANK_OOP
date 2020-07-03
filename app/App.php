@@ -35,8 +35,10 @@ class App
                 }
                 if (self::$params[2] == 'removed') {
                     $remove = Delete::deleteUser();
-                  
-                    var_dump($remove);
+                    $string = implode(", ", $remove);
+                    echo $string;
+                    $db = new DB;
+                    $db->delete($string);
                 }
 
              
