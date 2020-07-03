@@ -35,7 +35,8 @@ class JsonDb implements DataBase
  
     public function delete(string $userId) : void
     {
-        
+        $this->data[] = $userId;
+        $this->save();
     }
  
     public function show(string $userId) : array

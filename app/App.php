@@ -22,7 +22,7 @@ class App
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
         new JsonDb;
-        var_dump($param);
+        // var_dump($param);
 
 
         if (count(self::$params) == 3) {
@@ -32,6 +32,10 @@ class App
                     $newUser = User::createNew();
                     $db = new DB;
                     $db->create($newUser);
+                }
+                if (self::$params[2] == 'delete') {
+                    
+                    
                 }
 
              
