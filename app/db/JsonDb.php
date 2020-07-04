@@ -34,13 +34,8 @@ class JsonDb implements DataBase
     }
  
     public function delete(string $userId) : void
-    {
-        // $uuid = (string) Uuid::uuid4();
-       
-        
+    {        
         unset($this->data[$userId]);
-
-        // $this->data[$uuid] = $userId;
         $this->save();
     }
  
@@ -51,7 +46,9 @@ class JsonDb implements DataBase
     
     public function showAll() : array
     {
-        return [];
+        $data = file_get_contents('./../db/data.json');
+        $json_arr = json_decode($data, true);
+        return $json_arr;
     }
     private function save()
     {

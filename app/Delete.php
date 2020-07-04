@@ -5,9 +5,6 @@ class Delete
 {
     public static function deleteUser()
     {   
-        
-        
-        return ['id' => $_POST['id']];
-        
+        return ['id' => $_POST['id']];   
     }
 }

@@ -40,6 +40,11 @@ class App
                     $db = new DB;
                     $db->delete($string);
                 }
+                if (self::$params[2] == 'showAll') {
+                    $showAll = ShowAll::showAll();
+                    $db = new DB;
+                    $db->showAll($showAll);
+                }
 
              
 
