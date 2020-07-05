@@ -5,6 +5,7 @@ namespace App;
 use App\DB\JsonDb;
 use App\Login;
 use App\DB\JsonDb as DB;
+use Ramsey\Uuid\Uuid;
 
 class App
 {
@@ -24,10 +25,9 @@ class App
         new JsonDb;
         // var_dump($param);
 
-
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
-               
+
                 if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
                     $db = new DB;
@@ -44,6 +44,17 @@ class App
                     $showAll = ShowAll::showAll();
                     $db = new DB;
                     $db->showAll($showAll);
+                }
+                if (self::$params[2] == 'showUser') {
+                    $show = Show::showUser();
+                    $db = new DB;
+                    $string = implode(", ", $show);
+                    $db->show($string);
+                    $re = $db->show($string);
+                      foreach($re as $key => $value) {
+                        if($key == 'pass' ) continue;
+                            echo $value . '<br/>';
+                      }
                 }
 
              
