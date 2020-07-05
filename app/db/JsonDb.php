@@ -41,18 +41,23 @@ class JsonDb implements DataBase
  
     public function show(string $userId) : array
     {
-        return [];
+        $data = self::json();
+        return $data[$userId];
+
     }
     
     public function showAll() : array
     {
-        $data = file_get_contents('./../db/data.json');
-        $json_arr = json_decode($data, true);
+        $json_arr = self::json();
         return $json_arr;
+
     }
     private function save()
     {
         file_put_contents('./../db/data.json', json_encode($this->data));
+    }
+    private static function json() : array {
+        return $json_arr = json_decode(file_get_contents('./../db/data.json'), 1);
     }
 
 
