@@ -56,6 +56,12 @@ class App
                             echo $value . '<br/>';
                       }
                 }
+                if (self::$params[2] == 'update') {
+                    $update = Update::updated();
+                    $string = implode(", ", $update);
+                    echo $string;
+          
+                }
 
              
 
