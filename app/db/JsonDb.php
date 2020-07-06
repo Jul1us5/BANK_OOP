@@ -30,7 +30,7 @@ class JsonDb implements DataBase
  
     public function update(string $userId, array $userData) : void
     {
-        
+        $this->data[$userId] = $userData;
     }
  
     public function delete(string $userId) : void
@@ -42,8 +42,8 @@ class JsonDb implements DataBase
     public function show(string $userId) : array
     {
         $data = self::json();
+        
         return $data[$userId];
-
     }
     
     public function showAll() : array
