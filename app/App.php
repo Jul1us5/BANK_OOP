@@ -27,46 +27,22 @@ class App
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
+                
 
                 if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
+                    echo 'Vartotojas pridėtas';
                     $db = new DB;
                     $db->create($newUser);
                 }
                 if (self::$params[2] == 'removed') {
-                    $remove = Delete::deleteUser();
+                    $remove = User::User();
                     $string = implode(", ", $remove);
-                    echo $string;
+                    echo 'Pašalintas';
                     $db = new DB;
                     $db->delete($string);
                 }
-                if (self::$params[2] == 'showAll') {
-                    $showAll = ShowAll::showAll();
-                    $db = new DB;
-                    $db->showAll($showAll);
-                }
-                if (self::$params[2] == 'showUser') {
-                    $show = Show::showUser();
-                    $db = new DB;
-                    $string = implode(", ", $show);
-                    $db->show($string);
-                    $re = $db->show($string);
-                      foreach($re as $key => $value) {
-                        if($key == 'pass' ) continue;
-                            echo $value . '<br/>';
-                      }
-                }
-                if (self::$params[2] == 'update') {
-                    $update = Update::updated();
-                    $string = implode(", ", $update);
-                    echo $string;
-          
-                }
-
-             
-
-
-
+    
                 if (file_exists(self::VIEW_DIR.self::$params[1].'/'.self::$params[2].'.php')) {
                     require(self::VIEW_DIR.self::$params[1].'/'.self::$params[2].'.php');
                 }

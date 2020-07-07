@@ -1,1 +1,1 @@
-<h1>SLAPTAS</h1>
+<h1>Prisijungta</h1>
