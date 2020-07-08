@@ -1,15 +1,11 @@
 <?php
+
 namespace App;
 
-use App\DB\JsonDb;
+use App\DB\JsonDb as DB;
 
 
-$Json = new JsonDb;
-$data = $Json->showAll();
-
-foreach($data as $index => $value){
-    echo '<form action="removed" method="post">';
-    echo $value['name'] . ' ' . $value['surname']. ' <b>#</b>' . $value['id'] . ' ' . $value['key']. ' ' . $value['bill'] . ' Eur.';
-    echo '<button name="id" value="'.$index.'" type="submit">Pašalinti</button>';
-    echo '</form>';
-} 
+$data = DB::showAll();
+foreach ($data as $key => $value) {
+    echo $key+1 .' '. $value['name'] .' '. $value['surname'] .' '. $value['id'] .' '. $value['key'] .' '. $value['bill'] . ' Eur. <br/>';
+}
