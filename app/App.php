@@ -1,9 +1,11 @@
 <?php
 
 namespace App;
+// namespace VIEW\USERS;
 
 use App\DB\JsonDb;
 use App\Login;
+use VIEW\USERS;
 use App\DB\JsonDb as DB;
 use Ramsey\Uuid\Uuid;
 
