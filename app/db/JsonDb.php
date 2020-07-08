@@ -1,6 +1,6 @@
 <?php
 namespace App\DB;
-use App\DB\DataBase;
+use App\DB\DataBase as DB;
 use Ramsey\Uuid\Uuid;
 
 class JsonDb implements DataBase
@@ -22,32 +22,28 @@ class JsonDb implements DataBase
     
     public function create(array $userData) : void
     {
-        $uuid = (string) Uuid::uuid4();
-        $this->data[$uuid] = $userData;
+        $this->data[] = $userData;
         $this->save();
     }
  
-    public function update(string $userId, array $userData) : void
+    public function update(int $userId, array $userData) : void
     {
 
     }
  
-    public function delete(string $userId) : void
+    public function delete(int $userId) : void
     {        
-        unset($this->data[$userId]);
-        $this->save();
+
     }
  
-    public function show(string $userId) : array
+    public function show(int $userId) : array
     {
-        $data = self::json();
-        return $data[$userId];   
+        return [];
     }
     
     public function showAll() : array
     {
-        $data = self::json();
-        return $data;
+        return self::json();
     }
     private function save()
     {

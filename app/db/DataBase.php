@@ -5,11 +5,11 @@ interface DataBase
 {
     function create(array $userData) : void;
  
-    function update(string $userId, array $userData) : void;
+    function update(int $userId, array $userData) : void;
  
-    function delete(string $userId) : void;
+    function delete(int $userId) : void;
  
-    function show(string $userId) : array;
+    function show(int $userId) : array;
     
     function showAll() : array;
 }
