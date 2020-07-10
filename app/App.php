@@ -29,7 +29,7 @@ class App
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
-            
+                
                 
                 if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
@@ -39,10 +39,15 @@ class App
                 }
 
 
+
+
+
+
                 
     
                 if (file_exists(self::VIEW_DIR.self::$params[1].'/'.self::$params[2].'.php')) {
                     require(self::VIEW_DIR.self::$params[1].'/'.self::$params[2].'.php');
+                    
                 }
             }
         } else if (count(self::$params) == 2) {
