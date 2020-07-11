@@ -21,4 +21,10 @@ if(isset($_POST['id'])) {
         if($key == 'pass' ) continue;
             echo $value . '<br/>';
     }
+    
+    echo $_POST['id'] . '<-- INDEX<br/>';
+    echo '<form action="delete" method="post">';
+    echo '<input type="hidden" id="id" name="id" value="' . $_POST['id']. '">';
+    echo '<button type="submit" name="delete" value="delete">Delete</button>';
+    echo '</form>';
 }
