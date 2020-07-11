@@ -28,7 +28,8 @@ class JsonDb implements DataBase
  
     public function update(int $userId, array $userData) : void
     {
-
+        $this->data[$userId] = $userData;
+        $this->save();
     }
  
     public function delete(int $userId) : void
