@@ -16,7 +16,7 @@ class App
     const URL = 'http://192.168.64.3/PHP/BANK_OOP/public/';
     private static $params = [];
 
-    private static $defend = ['slaptas-1']; // Apsaugoti failai
+    private static $defend = ['slaptas-1', 'show', 'create', 'showAll', 'delete']; // Apsaugoti failai
 
     public static function start()
     {
@@ -29,7 +29,11 @@ class App
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
-                
+                if(in_array(self::$params[2], self::$defend)) {
+                    if(!Login::auth()) {
+                        self::redirect('login');
+                    }
+                }
                 
                 if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
@@ -37,6 +41,15 @@ class App
                     $db = new DB;
                     $db->create($newUser);
                 }
+                if (self::$params[2] == 'delete') {
+                    $deleteUser = User::deleteUser();
+                    $string = implode(", ", $deleteUser);
+                    $db = new DB;
+                    $db->delete($string);
+                    self::redirect('users/show');
+                }
+
+                
 
 
 
