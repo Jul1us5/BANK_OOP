@@ -136,3 +136,8 @@ body {
                     margin-top: 10px;
                     margin-bottom: 10px;
                 }
+    .add {
+        display: inline;
+        width: 300px;
+        text-align: left;
+    }

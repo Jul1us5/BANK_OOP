@@ -18,17 +18,15 @@ class App
     private static $message; // !!!!
     private static $defend = ['slaptas-1', 'show', 'create', 'showAll', 'delete']; // Apsaugoti failai
 
-
     public static function start()
     {
-        
+
         session_start();
         Style::head();
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
         $db = new DB;
-
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
@@ -37,22 +35,17 @@ class App
                         self::redirect('login');
                     }
                 }
-
-                if (self::$params[2] == 'addUser') {
+                if (isset($_POST['name'])) {
                     $newUser = User::createNew();
-                    echo 'Vartotojas pridėtas';
-                    // Cre..
+                    self::$message = 'Vartotojas pridėtas';
                     $db->create($newUser);
                 }
                 if (isset($_POST['delete'])) {
                     $deleteUser = User::deleteUser();
                     $string = implode(", ", $deleteUser);
                     $db->delete($string);
-                    // Mess..
                     self::$message = 'Vartotojas pašalintas';
-                    
                 }
-
                 if (isset($_POST['plus'])) {
                     $data = DB::show($_SESSION['id']);
                     $data['bill'] += $_POST['name'];
@@ -79,16 +72,7 @@ class App
                     header('Location: http://192.168.64.3/PHP/BANK_OOP/public/login');
                     die();
                 }
-
-
                 Style::end();
-
-
-
-
-
-
-
                 if (file_exists(self::VIEW_DIR . self::$params[1] . '/' . self::$params[2] . '.php')) {
                     require(self::VIEW_DIR . self::$params[1] . '/' . self::$params[2] . '.php');
                 }
@@ -115,7 +99,7 @@ class App
         }
     }
 
-    
+
 
 
     public static function getParams()
@@ -131,6 +115,4 @@ class App
     {
         return self::$message;
     }
-    
-
 }
