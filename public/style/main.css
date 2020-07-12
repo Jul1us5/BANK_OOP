@@ -94,3 +94,45 @@ body {
         text-align: center;
         margin-top: 200px;
     }
+.table {
+    color: black;
+    border: 1px dashed black;
+    width: 400px; 
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(194, 237, 255);
+    margin-left: 100px;
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+    .row * {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .show {
+        display: inline-block;
+        width: 88%;
+        text-align: left;
+    }
+        .show > span {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+            button {
+                width: 80px;
+            }
+                #x {
+                    position: absolute;
+                    color: red;
+                    left: 255px;
+                    bottom: 98px;
+                }
+                .for * {
+                    display: inline-block;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }

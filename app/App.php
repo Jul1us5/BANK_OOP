@@ -44,14 +44,13 @@ class App
                     // Cre..
                     $db->create($newUser);
                 }
-                if (self::$params[2] == 'delete') {
+                if (isset($_POST['delete'])) {
                     $deleteUser = User::deleteUser();
                     $string = implode(", ", $deleteUser);
                     $db->delete($string);
                     // Mess..
-                    self::$message = 'bad';
-                    echo self::$message;
-                    // self::redirect('users/show');
+                    self::$message = 'Vartotojas pašalintas';
+                    
                 }
 
                 if (isset($_POST['plus'])) {
@@ -114,9 +113,6 @@ class App
                 require(self::VIEW_DIR . self::$params[1] . '.php');
             }
         }
-        // if (file_exists(self::VIEW_DIR . self::$params[0] . '.php')) {
-        //     require(self::VIEW_DIR . self::$params[0] . '.php');
-        // }
     }
 
     
