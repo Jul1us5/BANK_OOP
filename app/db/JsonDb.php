@@ -40,8 +40,10 @@ class JsonDb implements DataBase
  
     public function show(int $userId) : array
     {
-        $data = self::json();
-        return $data[$userId];
+        
+            $data = self::json();
+            return $data[$userId];
+        
     }
     
     public function showAll() : array
