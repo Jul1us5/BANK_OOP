@@ -7,6 +7,7 @@ use App\DB\JsonDb;
 use App\Login;
 use VIEW\USERS;
 use App\DB\JsonDb as DB;
+use App\DB\MySQL;
 use Ramsey\Uuid\Uuid;
 
 class App
@@ -27,6 +28,7 @@ class App
         self::$params = explode('/', $param);
 
         $db = new DB;
+        // $db = new MySQL;
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
@@ -37,7 +39,6 @@ class App
                 }
                 if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
-                    $db = new DB;
                     self::$message = 'Vartotojas sukurtas';
                     $db->create($newUser);
                     self::redirect('users/showAll');
