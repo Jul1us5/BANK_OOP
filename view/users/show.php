@@ -3,9 +3,7 @@
 namespace App;
 
 use App\DB\JsonDb as DB;
-use App\App;
-use App\Style;
-use App\DB\JsonDb;
+
 
 $data = DB::json();
 

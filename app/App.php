@@ -35,10 +35,12 @@ class App
                         self::redirect('login');
                     }
                 }
-                if (isset($_POST['name'])) {
+                if (self::$params[2] == 'addUser') {
                     $newUser = User::createNew();
-                    self::$message = 'Vartotojas pridėtas';
+                    $db = new DB;
+                    self::$message = 'Vartotojas sukurtas';
                     $db->create($newUser);
+                    self::redirect('users/showAll');
                 }
                 if (isset($_POST['delete'])) {
                     $deleteUser = User::deleteUser();
