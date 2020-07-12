@@ -21,8 +21,9 @@ class App
 
     public static function start()
     {
+        
         session_start();
-
+        Style::head();
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
@@ -81,7 +82,7 @@ class App
                 }
 
 
-
+                Style::end();
 
 
 
@@ -118,7 +119,7 @@ class App
         // }
     }
 
-
+    
 
 
     public static function getParams()
@@ -134,4 +135,6 @@ class App
     {
         return self::$message;
     }
+    
+
 }

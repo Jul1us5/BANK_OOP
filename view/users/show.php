@@ -4,33 +4,30 @@ namespace App;
 
 use App\DB\JsonDb as DB;
 use App\App;
+use App\Style;
 use App\DB\JsonDb;
 
 $data= DB::json();
 
+echo '<div class="main">';
+echo '<div class="title">';
+echo '<h1>Peržiureti</h1>';
+echo '</div>';
+        
+
+    
+
 
 if (self::$params[2] == 'show') {
    
+    
 
 
 
-
-
-
-
-
-  
-    foreach($data as $index => $value){
-        
-
-        
-        echo '<form action="show" method="post">';
-        echo '<input type="text" name="id" value="'.$index.'">';
-        echo '<button type="submit">Rodyti</button>';
-        echo '</form>';
-      
-
-    }
+    echo '<form action="" method="post">';
+    echo 'Įveskite vartotojo ID: <input type="text" name="id" value="">';
+    echo '<button type="submit">Rodyti</button>';
+    echo '</form>';
 }
 if(isset($_POST['id'])) {
     $_SESSION['id'] = $_POST['id'];
@@ -54,4 +51,6 @@ if(isset($_POST['id'])) {
     echo '<button type="submit" name="minus" value="minus">-</button>';
     echo '</form>';
 }
+echo '</div>';
+Style::side();
 echo App::Message();
