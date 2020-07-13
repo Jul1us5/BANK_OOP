@@ -80,8 +80,10 @@ class MySQL implements DataBase
 
     function show(int $userId): array
     {
-        $data = self::data();
-        return $data[$userId];
+        $sql = "SELECT * FROM Bank_List WHERE id = ?";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute([$userId]);
+        return (array) $stmt->fetch();
     }
 
     function showAll(): array

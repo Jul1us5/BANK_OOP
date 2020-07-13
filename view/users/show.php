@@ -5,10 +5,8 @@ namespace App;
 use App\DB\JsonDb as DB;
 use App\DB\MySQL;
 
-// $data = DB::json();
-$data = MySQL::data();
-
-// var_dump($data['id']);
+// $data = MySQL::show(2);
+// print_r($data);
 
 echo '<div class="main">';
 echo '<div class="title">';
@@ -39,11 +37,12 @@ if (self::$params[2] == 'show') {
 
 echo App::Message();
 if (isset($_POST['id'])) {
-    if (array_key_exists($_POST['id'], $data)) {
+    $data = MySQL::show($_POST['id']);
+    $arYra = array_search($_POST['id'], $data);
+    if ($arYra != false) {
         $_SESSION['id'] = $_POST['id'];
         // $data = DB::show($_POST['id']);
         $data = MySQL::show($_POST['id']);
-        
 
         echo '<div class="show">';
         echo '<span><b>VARDAS:</b> ' . $data['firstname'] . '<br/></span>';
