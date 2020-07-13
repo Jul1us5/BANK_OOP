@@ -3,9 +3,12 @@
 namespace App;
 
 use App\DB\JsonDb as DB;
+use App\DB\MySQL;
 
+// $data = DB::json();
+$data = MySQL::data();
 
-$data = DB::json();
+// var_dump($data['id']);
 
 echo '<div class="main">';
 echo '<div class="title">';
@@ -38,13 +41,15 @@ echo App::Message();
 if (isset($_POST['id'])) {
     if (array_key_exists($_POST['id'], $data)) {
         $_SESSION['id'] = $_POST['id'];
-        $data = DB::show($_POST['id']);
+        // $data = DB::show($_POST['id']);
+        $data = MySQL::show($_POST['id']);
+        
 
         echo '<div class="show">';
-        echo '<span><b>VARDAS:</b> ' . $data['name'] . '<br/></span>';
-        echo '<span><b>PAVARDĖ:</b> ' . $data['surname'] . '<br/></span>';
-        echo '<span><b>SĄSKAITOS NR.:</b> ' . $data['id'] . '<br/></span>';
-        echo '<span><b>ASMENS KODAS:</b> ' . $data['key'] . '<br/></span>';
+        echo '<span><b>VARDAS:</b> ' . $data['firstname'] . '<br/></span>';
+        echo '<span><b>PAVARDĖ:</b> ' . $data['lastname'] . '<br/></span>';
+        echo '<span><b>SĄSKAITOS NR.:</b> ' . $data['counts'] . '<br/></span>';
+        echo '<span><b>ASMENS KODAS:</b> ' . $data['code'] . '<br/></span>';
         echo '<span><b>Eur.:</b> ' . $data['bill'] . ' €<br/></span>';
         echo '</div>';
 

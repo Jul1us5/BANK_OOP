@@ -25,7 +25,7 @@ $data = MySQL::showAll();
 // var_dump($data);
 if(!empty($data)) {
     foreach ($data as $key => $value) {
-        echo '<span>' .$key .'</span><span>'. $value['firstname'] .'</span><span>'. $value['lastname'] .'</span><span>'. $value['counts'] .'</span><span>'. $value['code'] .'</span><span>'. $value['bill'] . '.00 €</span><br/>';
+        echo '<span>' .$key.'</span><span>'. $value['firstname'] .'</span><span>'. $value['lastname'] .'</span><span>'. $value['counts'] .'</span><span>'. $value['code'] .'</span><span>'. $value['bill'] . '.00 €</span><br/>';
     }
 } else {
     echo "<div class='message'>";

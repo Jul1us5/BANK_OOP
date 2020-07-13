@@ -57,13 +57,13 @@ class MySQL implements DataBase
         $sql = "INSERT INTO Bank_List (firstname, lastname, counts, code, bill, pass) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = self::$pdo->prepare($sql);
         $stmt->execute([
-            $name = $userData['firstname'], 
+            $name = $userData['firstname'],
             $surname = $userData['lastname'],
             $id = $userData['counts'],
-            $key = $userData['code'], 
+            $key = $userData['code'],
             $bill = $userData['bill'],
             $pass = $userData['pass']
-            ]);
+        ]);
     }
 
 
@@ -73,11 +73,15 @@ class MySQL implements DataBase
 
     function delete(int $userId): void
     {
+        $sql = "DELETE FROM Bank_List";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute([$userId]);
     }
 
     function show(int $userId): array
     {
-        return [];
+        $data = self::data();
+        return $data[$userId];
     }
 
     function showAll(): array
@@ -87,5 +91,11 @@ class MySQL implements DataBase
         $stmt->execute();
         return (array) $stmt->fetchAll();
     }
-    
+    public function data()
+    {
+        $sql = "SELECT * FROM Bank_List";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+        return (array) $stmt->fetchAll();
+    }
 }
