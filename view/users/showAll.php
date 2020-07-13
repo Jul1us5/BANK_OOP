@@ -3,6 +3,8 @@
 namespace App;
 
 use App\DB\JsonDb as DB;
+use App\DB\JsonDb;
+use App\DB\MySQL;
 use App\Style;
 
 echo '<div class="main">';
@@ -18,10 +20,12 @@ echo '<span>ASMENS KODAS</span>';
 echo '<span>Eur.</span>';
 echo '</div>';
 
-$data = DB::showAll();
+$data = MySQL::showAll();
+// $data = DB::showAll();
+// var_dump($data);
 if(!empty($data)) {
     foreach ($data as $key => $value) {
-        echo '<span>' .$key .'</span><span>'. $value['name'] .'</span><span>'. $value['surname'] .'</span><span>'. $value['id'] .'</span><span>'. $value['key'] .'</span><span>'. $value['bill'] . '.00 €</span><br/>';
+        echo '<span>' .$key .'</span><span>'. $value['firstname'] .'</span><span>'. $value['lastname'] .'</span><span>'. $value['counts'] .'</span><span>'. $value['code'] .'</span><span>'. $value['bill'] . '.00 €</span><br/>';
     }
 } else {
     echo "<div class='message'>";

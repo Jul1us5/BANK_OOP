@@ -57,10 +57,10 @@ class MySQL implements DataBase
         $sql = "INSERT INTO Bank_List (firstname, lastname, counts, code, bill, pass) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = self::$pdo->prepare($sql);
         $stmt->execute([
-            $name = $userData['name'], 
-            $surname = $userData['surname'],
-            $id = $userData['id'],
-            $key = $userData['key'], 
+            $name = $userData['firstname'], 
+            $surname = $userData['lastname'],
+            $id = $userData['counts'],
+            $key = $userData['code'], 
             $bill = $userData['bill'],
             $pass = $userData['pass']
             ]);
@@ -82,7 +82,10 @@ class MySQL implements DataBase
 
     function showAll(): array
     {
-        return [];
+        $sql = "SELECT * FROM Bank_List";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+        return (array) $stmt->fetchAll();
     }
     
 }
