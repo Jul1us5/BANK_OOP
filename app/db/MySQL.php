@@ -69,13 +69,20 @@ class MySQL implements DataBase
 
     function update(int $userId, array $userData): void
     {
+        $sql = "UPDATE Bank_List SET firstname=?, lastname=?, counts=?, code=?, bill=?, pass=? WHERE id = $userId";
+            
+        $stmt = self::$pdo->prepare($sql);
+
+        $stmt->execute([$userData['firstname'], $userData['lastname'], $userData['counts'], $userData['code'], $userData['bill'], $userData['pass']]);
     }
 
     function delete(int $userId): void
     {
-        $sql = "DELETE FROM Bank_List";
+        $sql = "DELETE FROM Bank_List WHERE id = :id";
+
         $stmt = self::$pdo->prepare($sql);
-        $stmt->execute([$userId]);
+        
+        $stmt->execute(['id' => $userId]);
     }
 
     function show(int $userId): array

@@ -50,13 +50,13 @@ class App
                     self::$message = 'Vartotojas pašalintas';
                 }
                 if (isset($_POST['plus'])) {
-                    $data = DB::show($_SESSION['id']);
+                    $data = MySQL::show($_SESSION['id']);
                     $data['bill'] += $_POST['name'];
                     self::$message = 'Pinigai prideti ';
                     $db->update($_SESSION['id'], $data);
                 }
                 if (isset($_POST['minus'])) {
-                    $data = DB::show($_SESSION['id']);
+                    $data = MySQL::show($_SESSION['id']);
                     if ($data['bill'] > 0) {
                         $data['bill'] -= $_POST['name'];
                         self::$message = 'Pinigai nuskaičiuoti';
