@@ -27,8 +27,8 @@ class App
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
-        $db = new DB;
-        // $db = new MySQL;
+        // $db = new DB;
+        $db = new MySQL;
 
         if (count(self::$params) == 3) {
             if (self::$params[1] == 'users') {
